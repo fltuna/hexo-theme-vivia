@@ -26,7 +26,18 @@
   <link rel="preload" href="<%- url_for("/css/fonts/Roboto-Regular.ttf") %>" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="<%- url_for("/css/fonts/Roboto-Bold.ttf") %>" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <%- open_graph({twitter_id: theme.twitter, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
+  <meta property="og:title" content="<%= !!page.title ? page.title : config.title%>">
+  <meta property="og:site_name" content="<%= config.title%>">
+
+  <%
+  let ogType = 'article'
+  if (is_home() || is_page()) {
+    ogType = 'website'
+  } 
+  %>
+
+  <meta property="og:type" content="<%= ogType%>">
+
   <%
   let ogImage = '';
   function isAbsoluteUrl(url) {
