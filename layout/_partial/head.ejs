@@ -32,18 +32,14 @@
   function isAbsoluteUrl(url) {
     return /^https?:\/\//i.test(url);
   }
-  // Explicit exclusion of 404.jpg
-  function isValid404Image(url) {
-    return !url.includes('404.jpg');
-  }
-  if (page.og_image && isValid404Image(page.og_image)) {
+  if (page.og_image) {
     // If posts is specified the image for OGP then use that.
     if (isAbsoluteUrl(page.og_image)) {
       ogImage = page.og_image;
     } else {
       ogImage = config.url + (page.og_image.startsWith('/') ? page.og_image : '/' + page.og_image);
     }
-  } else if (config.og_image && isValid404Image(config.og_image)) {
+  } else if (config.og_image) {
     // Default OGP image for entire website.
     ogImage = config.url + (config.og_image.startsWith('/') ? config.og_image : '/' + config.og_image);
   }
