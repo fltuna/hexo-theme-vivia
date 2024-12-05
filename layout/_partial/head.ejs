@@ -26,6 +26,7 @@
   <link rel="preload" href="<%- url_for("/css/fonts/Roboto-Regular.ttf") %>" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="<%- url_for("/css/fonts/Roboto-Bold.ttf") %>" as="font" type="font/ttf" crossorigin="anonymous">
 
+  <%- open_graph({twitter_id: theme.twitter, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
   <%
   let ogImage = '';
   function isAbsoluteUrl(url) {
